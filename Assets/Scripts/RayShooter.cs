@@ -36,6 +36,7 @@ public class RayShooter : MonoBehaviour
                 ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
                 if (target != null) { // проверяем наличие у этого объекта компонента ReactiveTarget
                     target.ReactToHit(); // вызов метода для мишени
+                    Messenger.Broadcast(GameEvent.ENEMY_HIT); // к реакции на попадание добавлена рассылка сообщения
                 } else {
                     StartCoroutine(SphereIndicator(hit.point)); // запуск сопрограммы
                 }
